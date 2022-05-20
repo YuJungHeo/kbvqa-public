@@ -1,0 +1,49 @@
+DATASET:
+  NAME: "kvqa"
+  RAW_DATA: "data/kvqa/raw/dataset.json"
+  PROC_DATA: "data/kvqa/processed/proc_data.pkl"
+  FACT: "data/kvqa/processed/fact_with_index.pkl"
+  REL2IDX: "data/kvqa/processed/rel_index.pkl"
+  AVOCAB2IDX: "data/kvqa/processed/ans_vocab2idx.pkl"
+  IDX2VOCAB: "data/kvqa/processed/kg_qc_ans_idx2vocab.pkl"
+  VOCAB2IDX: "data/kvqa/processed/kg_qc_ans_vocab2idx.pkl"
+  NE2QID: "data/kvqa/processed/ne2qid.pkl"
+  QID2NE: "data/kvqa/processed/qid2ne.pkl"
+  IDX2QTYPE: "data/kvqa/processed/idx2qtype.pkl"
+  KG_1hop: "data/kvqa/processed/kg_1hop.pkl"
+  KG_2hop: "data/kvqa/processed/kg_2hop.pkl"
+  KG_3hop: "data/kvqa/processed/kg_3hop.pkl"
+  KG_spat: "data/kvqa/processed/kg_spatial.pkl"
+  GLOVE: "data/kvqa/processed/glove_embs_kvqa.pkl"
+  GLOVE_ANS_CAND: "data/kvqa/processed/glove_embs_kvqa_ans.pkl"
+RES:
+  TB: "tb/"
+  CKPT: "ckpt/"
+  LOG: "log/"
+MODEL:
+  SEED: 1234
+  NUM_EDGE: 19
+  NUM_MAX_Q: 15
+  NUM_MAX_C: 20
+  NUM_MAX_QNODE: 3
+  NUM_MAX_HK_1H: 50
+  NUM_MAX_HK_2H: 100
+  NUM_MAX_HK_3H: 150
+  NUM_MAX_KNODE_1H: 6
+  NUM_MAX_KNODE_2H: 10
+  NUM_MAX_KNODE_3H: 12
+  FC_HID_COEFF: 4
+  NUM_OUT: 300
+  NUM_ANS: 19360
+  NUM_WORD_EMB : 300
+  NUM_HIDDEN: 256
+  NUM_HEAD: 4
+  NUM_LAYER: 2
+  INP_DROPOUT: 0.0
+  ATTN_DROPOUT_K: 0.0
+  ATTN_DROPOUT_Q: 0.0
+  RELU_DROPOUT: 0.0
+  RES_DROPOUT: 0.0
+  EMB_DROPOUT: 0.0
+  ATTN_MASK: True
+  BATCH_SIZE: 256

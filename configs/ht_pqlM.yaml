@@ -1,0 +1,38 @@
+DATASET:
+  NAME: "pqlM"
+  PROC_DATA: "data/PathQuestion/processed/pql2n3h/proc_data.pkl"
+  REL2IDX: "data/PathQuestion/processed/pql2n3h/rel_idx2vocab.pkl"
+  AVOCAB2IDX: "data/PathQuestion/processed/pql2n3h/ans_vocab2idx.pkl"
+  IDX2VOCAB: "data/PathQuestion/processed/pql2n3h/idx2vocab.pkl"
+  VOCAB2IDX: "data/PathQuestion/processed/pql2n3h/vocab2idx.pkl"
+  KG_3hop: "data/PathQuestion/processed/pql2n3h/kg_2n3hop.pkl"
+  GLOVE: "data/PathQuestion/processed/pql2n3h/glove_embs.pkl"
+  GLOVE_ANS_CAND: "data/PathQuestion/processed/pql2n3h/glove_embs_ans.pkl"
+RES:
+  TB: "tb/"
+  CKPT: "ckpt/"
+  LOG: "log/"
+MODEL:
+  SEED: 1234
+  NUM_EDGE: 411
+  NUM_MAX_Q: 9
+  NUM_MAX_QNODE: 3
+  NUM_MAX_ASET: 52
+  NUM_MAX_QNODE: 3
+  NUM_MAX_HK_3H: 100
+  NUM_MAX_KNODE_3H: 7
+  FC_HID_COEFF: 4
+  NUM_OUT: 300
+  NUM_ANS: 438
+  NUM_WORD_EMB : 300
+  NUM_HIDDEN: 256
+  NUM_HEAD: 4
+  NUM_LAYER: 2
+  INP_DROPOUT: 0.2
+  ATTN_DROPOUT_K: 0.2
+  ATTN_DROPOUT_Q: 0.2
+  RELU_DROPOUT: 0.2
+  RES_DROPOUT: 0.2
+  EMB_DROPOUT: 0.2
+  ATTN_MASK: True
+  BATCH_SIZE: 128
