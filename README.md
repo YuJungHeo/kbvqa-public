@@ -51,6 +51,12 @@ python main.py --data_name pql --model_name ht --cfg ht_pql3h_more --n_hop 3 --n
 python main.py --data_name pql --model_name ht --cfg ht_pqlM --n_hop 3 --num_workers 2 --lr 0.0001 --abl_ans_fc --exp_name ht_pqlM --split_seed 789
 ```
 
+Train on Fact-based VQA (FVQA) dataset
+```
+# There are five splits of train and test dataset. For split {0-4},
+python main.py --data_name fvqa_sp{0-4} --model_name ht --cfg ht_fvqa --n_hop 1 --num_workers 0 --lr 0.0001 --wd 0.00001 --exp_name ht_fvqa_sp{0-4}
+```
+
 ## Evaluation
 We release the trained model checkpoints (1-hop, 2-hop, 3-hop on ORG and PRP questions) that we have used for our experiments on KVQA dataset.
 ```
@@ -81,6 +87,12 @@ python main.py --data_name pql --model_name ht --cfg ht_pql2h --n_hop 2 --num_wo
 python main.py --data_name pql --model_name ht --cfg ht_pql3h --n_hop 3 --num_workers 2 --abl_ans_fc --inference --exp_name ht_pql3h_dist --split_seed 789
 python main.py --data_name pql --model_name ht --cfg ht_pql3h_more --n_hop 3 --num_workers 2 --abl_ans_fc --inference --exp_name ht_pql3h_more_dist --split_seed 789
 python main.py --data_name pql --model_name ht --cfg ht_pqlM --n_hop 3 --num_workers 2 --abl_ans_fc --inference --exp_name ht_pqlM_dist --split_seed 789
+```
+
+In addition, we release the trained model checkpoints that we have used for our experiments on FVQA dataset.
+```
+bash download_fvqa_checkpoints.sh
+CUDA_VISIBLE_DEVICES=0 python main.py --data_name fvqa_sp{0-4} --model_name ht --cfg ht_fvqa --n_hop 1 --num_workers 0 --lr 0.0001 --wd 0.00001 --inference --exp_name ht_fvqa_sp{0-4}_dist
 ```
 
 ## Credits

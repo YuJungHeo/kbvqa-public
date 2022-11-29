@@ -1,0 +1,35 @@
+DATASET:
+  NAME: "fvqa"
+  PROC_DATA: "data/fvqa/processed/proc_data.pkl"
+  AVOCAB2IDX: "data/fvqa/processed/ans_vocab2idx.pkl"
+  IDX2VOCAB: "data/fvqa/processed/idx2vocab.pkl"
+  VOCAB2IDX: "data/fvqa/processed/vocab2idx.pkl"
+  KB: "data/fvqa/processed/kg_retrieved.pkl"
+  GLOVE: "data/fvqa/processed/glove_embs.pkl"
+  GLOVE_ANS_CAND: "data/fvqa/processed/glove_embs_ans.pkl"
+  SPLIT_DIR: "data/fvqa/raw/"
+RES:
+  TB: "tb/"
+  CKPT: "ckpt/"
+  LOG: "log/"
+MODEL:
+  SEED: 1234
+  NUM_MAX_Q: 21
+  NUM_MAX_QNODE: 3
+  NUM_MAX_HK_1H: 150
+  NUM_MAX_KNODE_1H: 3
+  FC_HID_COEFF: 1
+  NUM_OUT: 300
+  NUM_ANS: 501
+  NUM_WORD_EMB : 300
+  NUM_HIDDEN: 256
+  NUM_HEAD: 4
+  NUM_LAYER: 2
+  INP_DROPOUT: 0.2
+  ATTN_DROPOUT_K: 0.2
+  ATTN_DROPOUT_Q: 0.2
+  RELU_DROPOUT: 0.2
+  RES_DROPOUT: 0.2
+  EMB_DROPOUT: 0.2
+  ATTN_MASK: True
+  BATCH_SIZE: 128

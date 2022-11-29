@@ -77,9 +77,11 @@ def inference(model, test_loader, ckpt_path, args, task_idx=-1, res=False):
     total_right, total_right_aset, total_num = eval_epoch(model, test_loader, args)
     accuracy = total_right / total_num
 
-    if "pq" in args.data_name:
+    if "pq" in args.data_name or "fvqa" in args.data_name:
+        if "fvqa" in args.data_name:
+            print("## Test accuracy (@1) : %f" % (accuracy))
         accuracy = total_right_aset / total_num
-
+        
     return accuracy
 
 
@@ -205,7 +207,7 @@ def main():
     elif args.model_name == "gcn":
         model = GCN(model_cfg, args).cuda()
 
-    optimizer = optim.Adam(model.parameters(), lr=args.lr)
+    optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.wd)
     lr_scheduler = CosineAnnealingWarmUpRestarts(
         optimizer, T_0=150, T_mult=1, eta_max=0.001, T_up=10, gamma=0.5
     )
@@ -324,7 +326,7 @@ def main():
             val_acc_aset = total_right_aset_val / total_num_val
             summary.add_scalar("accu/val", val_acc, e_idx)
 
-            if "pq" in args.data_name:
+            if "pq" in args.data_name or "fvqa" in args.data_name:
                 summary.add_scalar("accu_aset/val", val_acc_aset, e_idx)
                 logger.info(
                     "epoch %i val accuracy : %f, %i/%i / %f, %i/%i"
@@ -338,7 +340,8 @@ def main():
                         total_num_val,
                     )
                 )
-                val_acc = val_acc_aset
+                if "pq" in args.data_name:
+                    val_acc = val_acc_aset
             else:
                 logger.info(
                     "epoch %i val accuracy : %f, %i/%i"
@@ -361,9 +364,11 @@ def main():
     logger.info("## Test accuracy : %f" % (test_acc_final))
     if "pq" in args.data_name:
         summary.add_scalar("accu_aset/test", test_acc_final, 0)
+    elif "fvqa" in args.data_name:
+        summary.add_scalar("accu_aset/test", test_acc_final, 0)
+        summary.add_scalar("accu/test", test_acc_final, 0)
     else:
         summary.add_scalar("accu/test", test_acc_final, 0)
-
 
 if __name__ == "__main__":
     main()
