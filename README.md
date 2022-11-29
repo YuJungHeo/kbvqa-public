@@ -14,7 +14,7 @@ conda env create --file environment.yml --name kbvqa
 ```
 
 ## Setup
-Download preprocessed KVQA, PQ-{2H, 3H, M}, PQL-{2H, 3H, M} datasets.
+Download preprocessed KVQA, PQ-{2H, 3H, M}, PQL-{2H, 3H, M}, FVQA datasets.
 ```
 bash download.sh
 ```
@@ -92,7 +92,7 @@ python main.py --data_name pql --model_name ht --cfg ht_pqlM --n_hop 3 --num_wor
 In addition, we release the trained model checkpoints that we have used for our experiments on FVQA dataset.
 ```
 bash download_fvqa_checkpoints.sh
-CUDA_VISIBLE_DEVICES=0 python main.py --data_name fvqa_sp{0-4} --model_name ht --cfg ht_fvqa --n_hop 1 --num_workers 0 --lr 0.0001 --wd 0.00001 --inference --exp_name ht_fvqa_sp{0-4}_dist
+python main.py --data_name fvqa_sp{0-4} --model_name ht --cfg ht_fvqa --n_hop 1 --num_workers 0 --lr 0.0001 --wd 0.00001 --inference --exp_name ht_fvqa_sp{0-4}_dist
 ```
 
 ## Credits
